@@ -30,7 +30,7 @@ pub fn build(b: *std.Build) void {
     // b.installArtifact(lib);
 
     const exe = b.addExecutable(.{
-        .name = "lightnet-raylib",
+        .name = "raylib_app",
         .root_source_file = b.path("src/main.zig"),
         .target = target,
         .optimize = optimize,
