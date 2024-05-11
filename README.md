@@ -19,6 +19,42 @@
 
   It took a while to config and understand how build script works a bit. Still need more understand some area but zig will change api but the format almost the same for setup compile.
 
+# raylib:
+```zig
+const r = @cImport({
+    @cInclude("raylib.h");
+    @cInclude("raygui.h");
+});
+//...
+r.InitWindow(960, 540, "My Window Name");
+```
+  Note it still use access but with name space. Check out on cheatsheet for more information from raylib site.
+
+# raygui:
+  Note that Zig language use name space for easy access for C language. As well same with the raylab as they group together.
+
+```zig
+const r = @cImport({
+    @cInclude("raylib.h");
+    @cInclude("raygui.h");
+});
+
+//...
+r.InitWindow(960, 540, "My Window Name");
+//...
+```
+  It can be found in https://github.com/raysan5/raygui/blob/master/src/raygui.h
+
+```zig
+if (r.GuiButton(r.Rectangle{ .x = 20, .y = 100, .height = 16, .width = 100 }, "Print!") == 1) {
+    std.debug.print("Hello World!\n", .{});
+}
+```
+  Note button return is int and not bool.
+
+  Note one file is add to handle raygui.h file for load correctly that is raygui_impl.c.
+
+
 # Zig:
 ```
 zig build

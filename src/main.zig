@@ -7,7 +7,6 @@ const r = @cImport({
     @cInclude("raylib.h");
     @cInclude("raygui.h");
 });
-//const rgui = @cImport(@cInclude("raygui.h"));
 
 pub fn main() !void {
     r.InitWindow(960, 540, "My Window Name");
@@ -15,18 +14,21 @@ pub fn main() !void {
     defer r.CloseWindow();
 
     r.SetTargetFPS(60);
-    //const rec = rgui.Rectangle{ .x = 600, .y = 40, .width = 120, .height = 20 };
+    const rec_checkbox = r.Rectangle{ .x = 20, .y = 20, .width = 20, .height = 20 };
     var checked = false;
-    //var value: f32 = 0;
+    var s_value: f32 = 0;
 
     while (!r.WindowShouldClose()) {
         r.BeginDrawing();
         r.ClearBackground(r.BLACK);
 
-        //rg.GuiButton(_, "HELLO");
-        _ = r.GuiCheckBox(r.Rectangle{ .x = 20, .y = 20, .height = 200, .width = 100 }, "FORCE CHECK!", &checked);
-        //_ = rgui.GuiButton(rgui.Rectangle{ .x = 20, .y = 20, .height = 200, .width = 100 }, "FORCE CHECK!");
-        //_ = rgui.GuiSliderBar(rec, "StartAngle", null, &value, -450, 450);
+        _ = r.GuiCheckBox(rec_checkbox, "FORCE CHECK!", &checked);
+        _ = r.GuiButton(r.Rectangle{ .x = 20, .y = 40, .height = 16, .width = 100 }, "Click!");
+        _ = r.GuiSliderBar(r.Rectangle{ .x = 100, .y = 60, .height = 16, .width = 100 }, "StartAngle", null, &s_value, -450, 450);
+
+        if (r.GuiButton(r.Rectangle{ .x = 20, .y = 100, .height = 16, .width = 100 }, "Print!") == 1) {
+            std.debug.print("Hello World!\n", .{});
+        }
 
         r.DrawText("Hello, World!", 190, 200, 20, r.LIGHTGRAY);
         r.EndDrawing();
