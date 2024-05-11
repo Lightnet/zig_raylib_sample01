@@ -2,12 +2,19 @@
 
 # License: MIT
 
+# Lib:
+ - raylib 5.0 master f62202198e35161a9fe394a14bbd1a7c655107ad
+ - raygui 4.0 master 12804826d01bfb636e36f816bda19eaa23b4ace7
+ - zig 0.12.0
+
 # Information:
-  Simple raylib and raygui test build.
+  Simple raylib and raygui test build. After doing search engine.
 
-  Note use zig deps download cache to run application.
+  Note use zig dependencies download to run application.
 
-  After doing search engine. It come down on dependencies save.
+  By using the dependencies to handle build.zig script for easy compile and run application.
+
+  It took a while to config and understand how build script works a bit. Still need more understand some area but zig will change api but the format almost the same for setup compile.
 
 # Zig:
 ```

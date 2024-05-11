@@ -5,8 +5,6 @@
 const std = @import("std");
 const raylibSDK = @import("raylib");
 
-//const rayguiSrc = "raygui/src";
-
 pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
@@ -70,14 +68,9 @@ pub fn build(b: *std.Build) void {
         //.raygui = true,
         .platform_drm = false,
     });
-    exe.addIncludePath(.{ .path = "raylib/src" });
+    //exe.addIncludePath(.{ .path = "raylib/src" });
 
     exe.linkLibrary(raylib_dep);
-
-    //exe.linkLibrary(ray_gui);
-    // b.installArtifact(ray_gui);
-
-    //exe.addIncludePath(.{ .path = "raygui/src" });
 
     // TEST raygui
     // exe.addIncludePath(.{ .path = "libs" });
@@ -87,9 +80,6 @@ pub fn build(b: *std.Build) void {
     //     //.flags = &.{"-O3"},
     // });
     // exe.linkLibC();
-    //RAYGUI
-
-    //exe.addIncludePath(.{ .path = rayguiSrc });
 
     //APP
     b.installArtifact(exe);
