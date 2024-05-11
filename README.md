@@ -13,11 +13,9 @@
 # Information:
   Simple raylib and raygui test build. After doing search engine.
 
-  Note use zig dependencies download to run application.
+  The package manager is work in progress from Zig language Dev. Since the release of 0.11.0 This project use zig dependencies download to run application. By using the dependencies to handle build.zig script for easy compile and run application.
 
-  By using the dependencies to handle build.zig script for easy compile and run application.
-
-  It took a while to config and understand how build script works a bit. Still need more understand some area but zig will change api but the format almost the same for setup compile.
+  The Zig language will be subject to change in API. Which will break the build config. Since it not release to 1.0.0
 
 # raylib:
 ```zig
