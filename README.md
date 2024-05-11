@@ -7,6 +7,9 @@
  - raygui 4.0 master 12804826d01bfb636e36f816bda19eaa23b4ace7
  - zig 0.12.0
 
+# OS:
+ * Windows 10 [Tested]
+
 # Information:
   Simple raylib and raygui test build. After doing search engine.
 
