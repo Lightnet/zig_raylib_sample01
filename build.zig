@@ -2,6 +2,8 @@
 // https://github.com/ziglang/zig/issues/17302#issuecomment-1737417445
 // https://ziggit.dev/t/include-paths-build-paths-of-a-dependency-from-a-url/3263
 //
+// zig build run
+// will compile build and run application
 const std = @import("std");
 const raylibSDK = @import("raylib");
 
@@ -53,7 +55,7 @@ pub fn build(b: *std.Build) void {
     exe.addIncludePath(raygui_dep.path("src"));
     // project root > lib folder create > raygui github
     //exe.addIncludePath(.{ .path = "lib/raygui/src" }); //works
-    exe.addCSourceFiles(.{
+    exe.addCSourceFiles(.{ // for loading raygui.h file raygui_impl.c
         .files = &[_][]const u8{"src/c/raygui_impl.c"},
         .flags = &[_][]const u8{ "-g", "-O3" },
     });
@@ -65,25 +67,14 @@ pub fn build(b: *std.Build) void {
         .rshapes = true,
         .rtext = true,
         .rtextures = true,
-        //.raygui = true,
+        //.raygui = true, // does not work atm
         .platform_drm = false,
     });
     //exe.addIncludePath(.{ .path = "raylib/src" });
-
     exe.linkLibrary(raylib_dep);
-
-    // TEST raygui
-    // exe.addIncludePath(.{ .path = "libs" });
-    // exe.addCSourceFile(.{
-    //     .file = .{ .path = "libs/libs.c" },
-    //     .flags = &strip_flags,
-    //     //.flags = &.{"-O3"},
-    // });
-    // exe.linkLibC();
-
-    //APP
+    //APP EXE
     b.installArtifact(exe);
-    //RUN CMD
+    //RUN APP CMD
     const run_cmd = b.addRunArtifact(exe);
     run_cmd.step.dependOn(b.getInstallStep());
     if (b.args) |args| {
@@ -91,6 +82,7 @@ pub fn build(b: *std.Build) void {
     }
     const run_step = b.step("run", "Run the app");
     run_step.dependOn(&run_cmd.step);
+
     // //TEST
     // const lib_unit_tests = b.addTest(.{
     //     .root_source_file = b.path("src/root.zig"),
