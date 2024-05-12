@@ -66,14 +66,12 @@ zig build run
 Window, text and gui checkbox test.
 
 
-# raylib:
- * zig fetch --save https://github.com/raysan5/raylib/archive/f62202198e35161a9fe394a14bbd1a7c655107ad.tar.gz
-
+# raylib examples refs:
+ * https://github.com/Durobot/raylib-zig-examples
 
 # Key Area Points:
  - https://github.com/ziglang/zig/issues/17302#issuecomment-1737417445
  - https://ktj.st/posts/using-a-single-header-c-library-in-zig/
-
 
 # Test refs:
 - https://github.com/lhk/raylib_zig_build_setup
@@ -84,7 +82,4 @@ Window, text and gui checkbox test.
 - https://github.com/lhk/raylib_zig_build_setup/blob/main/build.zig
 - https://github.com/ziglang/zig/issues/19423
 - https://github.com/ziglang/zig/issues/17302#issuecomment-1737417445
-- 
-- 
-- 
 - 
